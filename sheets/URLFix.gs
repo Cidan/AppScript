@@ -30,8 +30,6 @@ function fixURLs_() {
   
   var data = range.getFormulas();
   
-  var re = new RegExp("=hyperlink\\\(\"([^\"]+)\",(\s+)?\"([^\"]+)", "gi");
-  
   // Loop through all values and attempt to fix all URL's.
   for (var y = 0; y < data.length; y++){
     for (var x = 0; x < data[y].length; x++){
@@ -39,6 +37,7 @@ function fixURLs_() {
       if (formula.length <= 0){
         continue;
       }
+      var re = new RegExp("=hyperlink\\\(\"([^\"]+)\",(\s+)?\"([^\"]+)", "gi");
       res = re.exec(formula);
       if (res == null) {
         notFound++;
